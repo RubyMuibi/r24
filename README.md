@@ -16,7 +16,7 @@ These instructions will help you get a copy of the project up and running on you
 
 ### Prerequisites
 
-Here's what you need to install the software and how to install them:
+Here's what you need to install the software and how to install it:
 
 - Node.js
 - npm
