@@ -1,6 +1,6 @@
 # SMART 💭
 
-This is an AI Copilot with social networking application, built with MERN. It allows users to brainstorm, explore, and collaborate on ideas and projects.
+This is a web application with AI Copilot and social networking, built with MERN. It allows users to brainstorm, explore, and collaborate on ideas and projects.
 
 ## How to Use
 1. Visit https://smart.rubym.xyz or clone this repository.
