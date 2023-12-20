@@ -14,9 +14,9 @@ jobs:
             - name: Login to docker hub
               run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             - name: Build docker image
-              run: docker build -t smartcicd/smart .
+              run: docker build -t rubyrails/smart .
             - name: Push docker image to docker hub
-              run: docker push smartcicd/smart:latest
+              run: docker push rubyrails/smart:latest
 
 
     deploy:
@@ -24,10 +24,10 @@ jobs:
         runs-on: aws-ec2
         steps:
             - name: Pull docker image from docker hub
-              run: docker pull smartcicd/smart:latest
+              run: docker pull rubyrails/smart:latest
             - name: Delete existing docker container
               run: docker rm -f smart-container
             - name: Run docker container
-              run: docker run -d -p 80:80 --name smart-container smartcicd/smart
+              run: docker run -d -p 80:80 --name smart-container rubyrails/smart
         
               
