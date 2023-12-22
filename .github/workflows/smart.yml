@@ -26,9 +26,9 @@ jobs:
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          host: ${{ secrets.AWS_PUBLIC_DNS }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_EC2_SSH_KEY}}
           script: |
             sudo apt-get -y update
             sudo apt-get install -y apache2
