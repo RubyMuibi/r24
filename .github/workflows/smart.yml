@@ -30,15 +30,15 @@ jobs:
         cd client
         npm run build
 
-    - name: Transfer files to AWS EC2
-      uses: appleboy/scp-action@master
+    - name: Copy files to AWS EC2
+      uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.EC2_HOST}}
+        host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY}}
+        key: ${{ secrets.EC2_SSH_KEY }}
         port: ${{ secrets.EC2_PORT }}
-        source: "client/build/"
-        target: "/var/www/html/client"
+        script: |
+          scp -r -i /path/to/your/private-key.pem client/build/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/client
 
     - name: SSH into AWS EC2 and restart server
       uses: appleboy/ssh-action@master
