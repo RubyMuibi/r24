@@ -1,6 +1,5 @@
-name: SMART-CICD
+name: Deploy to AWS EC2
 
-# Trigger deployment only on push to main branch
 on:
   push:
     branches:
@@ -8,31 +7,47 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY}}
-          REMOTE_HOST: ${{ secrets.HOST_DNS}}
-          REMOTE_USER: ${{ secrets.USERNAME}}
-          TARGET: ${{ secrets.TARGET_DIR }}
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '14'
 
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS}}
-          username: ${{ secrets.USERNAME}}
-          key: ${{ secrets.EC2_SSH_KEY}}
-          script: |
-            sudo apt-get -y update
-            sudo apt-get install -y apache2
-            sudo systemctl start apache2
-            sudo systemctl enable apache2
-            cd home
-            sudo mv * /var/www/html
+    - name: Install dependencies
+      run: |
+        cd client
+        npm install
+        cd ../server
+        npm install
+
+    - name: Build the React app
+      run: |
+        cd client
+        npm run build
+
+    - name: Transfer files to AWS EC2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.EC2_HOST}}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY}}
+        port: ${{ secrets.EC2_PORT }}
+        source: "client/build/"
+        target: "/var/www/html/client"
+
+    - name: SSH into AWS EC2 and restart server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        port: ${{ secrets.EC2_PORT }}
+        script: |
+          cd /path/to/your/server
+          npm install
+          pm2 restart your_server_app_name
