@@ -1,33 +1,38 @@
-name: smart CICD
+name: SMART-CICD
 
+# Trigger deployment only on push to main branch
 on:
-    push:
-      branches: 
-         - main
+  push:
+    branches:
+      - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Check the source code
-              uses: actions/checkout@v4       
-            - name: Login to docker hub
-              run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            - name: Build docker image
-              run: docker build -t rubyrails/smart .
-            - name: Push docker image to docker hub
-              run: docker push rubyrails/smart:latest
+  deploy:
+    name: Deploy to EC2 on master branch push
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
 
-    deploy:
-        needs: build
-        runs-on: self-hosted
-        steps:
-            - name: Pull docker image from docker hub
-              run: docker pull rubyrails/smart:latest
-            - name: Delete existing docker container
-              run: docker rm -f smart-container
-            - name: Run docker container
-              run: docker run -d -p 80:80 --name smart-container rubyrails/smart
-        
-              
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_EC2_SSH_KEY}}
+          REMOTE_HOST: ${{ secrets.AWS_PUBLIC_DNS}}
+          REMOTE_USER: ${{ secrets.AWS_USERNAME }}
+          TARGET: ${{ secrets.AWS_TARGET_DIR }}
+
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo apt-get -y update
+            sudo apt-get install -y apache2
+            sudo systemctl start apache2
+            sudo systemctl enable apache2
+            cd home
+            sudo mv * /var/www/smart
