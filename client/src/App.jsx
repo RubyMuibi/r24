@@ -1,27 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
+import Home from "./pages/Home/Home"
 
-import { Home, ChatBot } from "./pages"
-import {Header, SideBar} from "./components"
-
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
+ 
 
   return (
     <>
     <BrowserRouter>
-
-    <Header/>
-    <SideBar/>
-    
-    <Routes>
-      <Route path="/" element= {<Home/>} />
-      <Route path="/chatbot" element= {<ChatBot/>} />
-      <Route path="*" element= {<h1> 404 Error: Page Not Found</h1>} />
-    </Routes>
-
+     <Header/>
+      <Routes>
+      <Route path="/" element={<Home/>} />
+      </Routes>
+      <Footer/>
     </BrowserRouter>
     </>
   )
 }
 
-export default App;
+export default App
