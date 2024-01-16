@@ -1,6 +1,8 @@
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import Home from "./pages/Home/Home"
+import Rum from "./pages/Rum/Rum"
+import NotFound from "./components/NotFound/NotFound"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -13,6 +15,8 @@ function App() {
      <Header/>
       <Routes>
       <Route path="/" element={<Home/>} />
+      <Route path="/rum/:id" element={<Rum/>}/>
+      <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

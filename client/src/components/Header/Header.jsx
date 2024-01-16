@@ -1,13 +1,15 @@
 import headerStyles from "./header.module.css";
+
+import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 
 export default function Header() {
   return (
     <>
       <header className={headerStyles.container}>
-        <div className={headerStyles.logo}>
+        <Link to="/" className={headerStyles.logo}>
           R24
-        </div>
+        </Link>
 
 
         <div className={headerStyles.headerOptions}>

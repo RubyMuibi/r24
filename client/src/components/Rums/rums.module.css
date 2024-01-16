@@ -5,6 +5,7 @@
     height: 75vh;
     overflow-y: scroll;
     border-top: none;
+    
 }
 
 .rumContainer  {
@@ -16,6 +17,9 @@
     border-top: none;
     padding: 8px;
     box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 .imgContainer {
@@ -38,12 +42,12 @@
     margin-top: 20px;
     padding: 8px;
     border-top: 1px solid black;
+    
 }
 
 .detailsContainer h3 {
     font-size: 12px;
     font-weight: 500;
-    color: black;
 }
 
 .infoContainer {
@@ -64,7 +68,7 @@
 .likesContainer p {
     display: inline-block;
     font-size: 10px;
-    
+   
 }
 
 .likeIcon {
