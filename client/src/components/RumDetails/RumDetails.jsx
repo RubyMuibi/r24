@@ -60,7 +60,7 @@ export default function RumDetails() {
                 </div>
 
                 <Link to={`https:${x.source}`} className={ rumStyles.link }>
-                    <h4> Source Code: </h4>
+                    <h4> RUM Source Code: </h4>
                     <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" />
                 </Link>
 
