@@ -1,24 +1,40 @@
-import footerStyles from "./footer.module.css"
+import footerStyles from "./footer.module.css";
 
-export default function Footer () {
+export default function Footer() {
   return (
     <>
-      <footer className={footerStyles.container} >
+      <footer className={footerStyles.container}>
+        <div className={footerStyles.left}>
+          <p> &copy; 2024 R24 </p>
 
-      <div className={footerStyles.left} > 
-      <p> &copy; 2024 R24 </p> 
-      <p> TWITTER </p> 
-      <p> GITHUB </p>
-      </div>
+          <a
+            href="https://twitter.com/rubymuibi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p> TWITTER </p>
+          </a>
 
-      <div className={ footerStyles.right } > 
-      <p> ABOUT </p>
-      <p> CONTACT </p>
-      <p> TERMS & CONDITIONS </p>
-      </div>
+          <a
+            href="https://github.com/rubymuibi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p> GITHUB </p>
+          </a>
+        </div>
 
-
+        <div className={footerStyles.right}>
+          <a
+            href="mailto:hi@rubymuibi.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p> CONTACT </p>
+          </a>
+          <p> TERMS & CONDITIONS </p>
+        </div>
       </footer>
     </>
   );
-};
+}

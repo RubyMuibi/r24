@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+.container a{
+  text-decoration: none;
+  color: white;
+}
+
 .left {
   display: inline-flex;
   justify-content: space-between;

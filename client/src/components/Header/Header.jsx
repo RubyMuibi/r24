@@ -1,4 +1,4 @@
-import headerStyles from "./header.module.css";
+import styles from "./header.module.css";
 
 import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
@@ -6,24 +6,33 @@ import { Icon } from '@iconify/react';
 export default function Header() {
   return (
     <>
-      <header className={headerStyles.container}>
-        <Link to="/" className={headerStyles.logo}>
+      <header className={styles.container}>
+        <Link to="/" className={styles.logo}>
           R24
         </Link>
 
 
-        <div className={headerStyles.headerOptions}>
-          <p> Log In </p>
-          <p> Sign Up </p>
+        <div className={styles.headerOptions}>
+          <Link to="/auth" className={styles.noStyle }>
+            <p> Log In </p>
+          </Link>
+          <Link to="/auth" className={styles.noStyle }>
+            <p> Sign Up </p>
+          </Link>
 
-          <div className={headerStyles.icon}>
+          <div className={styles.icon}>
             <Icon
               icon="pepicons-pencil:line-y"
               color="white"
               width="20"
               height="20"
             />
-            <Icon icon="ri:github-fill" color="white" width="20" height="20" className={headerStyles.githubIcon} />
+            <a 
+            href="https://github.com/rubymuibi"
+            target="_blank"
+            >
+              <Icon icon="ri:github-fill" color="white" width="20" height="20" className={styles.githubIcon} />
+            </a>
           </div>
         </div>
       </header>
