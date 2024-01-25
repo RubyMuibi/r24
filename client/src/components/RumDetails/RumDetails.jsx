@@ -49,7 +49,7 @@ export default function RumDetails() {
               <div className={ rumStyles.linkContainer } >
                 
                 <div className={ rumStyles.link }>
-                    <h4> User: </h4>
+                    <h4> RUM Developer: </h4>
                     <h5> {x.user}  </h5>
                     
                 </div>
