@@ -38,7 +38,8 @@ export default function Center() {
      ( 
       <>
       <div className={styles.editContainer}>
-            <h1 className={styles.text}>Hello</h1>
+            <button > Add a Rum </button>
+            <button> Edit Profile </button>
         </div>
 
       <main className={styles.container}>
