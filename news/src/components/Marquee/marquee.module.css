@@ -1,0 +1,29 @@
+
+.container {
+    display: flex;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 16px 0px;
+    width: 105%;
+    margin-left: -10px;
+
+
+}
+
+.text {
+    font-size: 16px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+}

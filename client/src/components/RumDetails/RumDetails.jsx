@@ -1,4 +1,4 @@
-import rumStyles from "./rum-details.module.css";
+import styles from "./rum-details.module.css";
 import NotFound from "../../components/NotFound/NotFound";
 
 import { useState, useEffect } from "react";
@@ -31,40 +31,40 @@ export default function RumDetails() {
 
   return (
     <>
-      {notFound && <NotFound />}
+      {notFound ? <NotFound /> :
 
-      <main className={ rumStyles.container }>
+     (  <main className={ styles.container }>
         {currentRum.map((x) => {
           return (
             <>
-              <section className={ rumStyles.imgContainer }>
-                <img src={x.image}  className={ rumStyles.rumImage } />
+              <section className={ styles.imgContainer }>
+                <img src={x.image}  className={ styles.rumImage } />
               </section>
 
-              <section className={ rumStyles.detailsContainer }>
+              <section className={ styles.detailsContainer }>
               <h1> {x.rum} </h1>
               <h3> {x.description} </h3>
 
 
-              <div className={ rumStyles.linkContainer } >
+              <div className={ styles.linkContainer } >
                 
-                <div className={ rumStyles.link }>
+                <div className={ styles.link }>
                     <h4> RUM Developer: </h4>
                     <h5> {x.user}  </h5>
                     
                 </div>
 
-                <div className={ rumStyles.link }> 
+                <div className={ styles.link }> 
                 <h4> Rum Mix: </h4>
                 <h5> {x.mix} </h5>
                 </div>
 
-                <Link to={`https:${x.source}`} className={ rumStyles.link }>
+                <Link to={`https:${x.source}`} className={ styles.link }>
                     <h4> RUM Source Code: </h4>
                     <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" />
                 </Link>
 
-                <Link to={x.url} className={ rumStyles.link }>
+                <Link to={x.url} className={ styles.link }>
                     <h4> RUM Demo: </h4>
                     <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" />
                 </Link>
@@ -75,6 +75,7 @@ export default function RumDetails() {
           );
         })}
       </main>
+     ) }
     </>
   );
 }

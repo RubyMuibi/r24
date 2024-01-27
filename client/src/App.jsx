@@ -2,6 +2,7 @@ import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import Home from "./pages/Home/Home"
 import Rum from "./pages/Rum/Rum"
+import Center from "./pages/Center/Center"
 import NotFound from "./components/NotFound/NotFound"
 
 import Auth from "./components/Auth/Auth"
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/rum/:id" element={<Rum/>}/>
       <Route path="/auth" element={<Auth/>} />
+      <Route path="/:id" element={<Center/>}/>
       <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>

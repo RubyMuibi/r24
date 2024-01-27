@@ -6,6 +6,18 @@
     
 }
 
+.logoContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoContainer p {
+    font-size: 12px;
+    font-weight: 500;
+}
+
 .logo {
     font-size: 18px;
     font-weight: 900;
@@ -55,18 +67,4 @@
 .noStyle {
     text-decoration: none;
     color: white;
-}
-
-
-.stylish   {
-    text-decoration: none;
-    color: black;
-}
-
-.stylish p  {
-    background-color: white;
-    color: black;
-    border-radius: 3px;
-    padding: 5px;
-    text-decoration: none;
 }
