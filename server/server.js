@@ -25,16 +25,13 @@ app.get("/", async (req, res) => {
     const getAllRum = await rumModel.find();
     res.json(getAllRum);
   } catch (error) {
-    console.error(error);
-    res.send(error);
+    console.log('Server Error:', error);
   }
 });
 
 app.get('/authUser', async (req, res) => {
   try {
       const githubCode = req.query.code
-
-      console.log(githubCode)
 
       const apiURL = "https://github.com/login/oauth/access_token"
 

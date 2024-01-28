@@ -10,7 +10,6 @@ export default function Auth() {
 
 
   const handleGithubLogin = () => {
-    const clientID = "bbeb5c05c23352db3a54";
     window.location.assign(
       `https://github.com/login/oauth/authorize?client_id=${clientID}`
     );
