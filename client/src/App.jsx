@@ -5,12 +5,12 @@ import Rum from "./pages/Rum/Rum"
 import Center from "./pages/Center/Center"
 import NotFound from "./components/NotFound/NotFound"
 
-import Auth from "./components/Auth/Auth"
+import Auth from "./pages/Auth/Auth"
+import AuthContextProvider from "./contexts/AuthContext"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
- 
 
   return (
     <>
@@ -18,9 +18,9 @@ function App() {
      <Header/>
       <Routes>
       <Route path="/" element={<Home/>} />
-      <Route path="/rum/:id" element={<Rum/>}/>
-      <Route path="/auth" element={<Auth/>} />
-      <Route path="/:id" element={<Center/>}/>
+      <Route path="/rum/:id" element={<AuthContextProvider><Rum/></AuthContextProvider>}/>
+      <Route path="/auth" element={<AuthContextProvider><Auth/></AuthContextProvider>} />
+      <Route path="/:id" element={<AuthContextProvider><Center/></AuthContextProvider>}/>
       <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
