@@ -1,9 +1,12 @@
+require("module-alias/register");
+
+
 const express = require("express");
 const cors = require("cors");
 
 const mongoose = require("mongoose");
-const rumModel = require("./database/rums");
-
+const User = require("@models/user")
+const Project = require("@models/project")
 const app = express();
 const port = 4000;
 
@@ -11,12 +14,12 @@ app.use(express.json());
 app.use(cors());
 
 require("dotenv").config();
-const dbURI = process.env.MONGODB_URI;
+const dbUri = process.env.MONGODB_URI;
 const clientID = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
 
 mongoose
-  .connect(dbURI)
+  .connect(dbUri)
   .then(() => console.log("Connected to MongoDB"))
   .catch(console.error);
 
