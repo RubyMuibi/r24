@@ -3,7 +3,7 @@ const { findAllProjects } = require("@managers/projects")
 exports.getAllProjects = async (req, res) => {
     try{
         const projects = await findAllProjects()
-        res.json(projects)
+        res.status(200).json(projects)
     }
 
     catch (error) {

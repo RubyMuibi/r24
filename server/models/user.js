@@ -8,7 +8,7 @@ const userShema = new Schema({
     required: true,
   }, 
 
-  github_Id: String,
+  github_id: String,
 
   email: String,
 
@@ -18,8 +18,17 @@ const userShema = new Schema({
 
   github:  String,
 
-  twitter: String,
 });
 
 const User = model("users", userShema);
 module.exports = User;
+
+
+/*
+"name": "ruby",
+"github_id": "0000",
+"email":"ruby@rubymuibi.com",
+"bio": "Hi, I am Ruby, a software developer",
+"website": "https://rubymuibi.com",
+"github": "https://github.com/rubymuibi"
+*/

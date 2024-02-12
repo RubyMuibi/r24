@@ -1,6 +1,6 @@
-const { authenticateUser } = require("@managers/users");
+const { authenticateUser, findAUser } = require("@managers/users");
 
-async function authUser(req, res) {
+exports.authUser = async(req, res) => {
     try {
         const githubCode = req.query.code
         const apiURL = "https://github.com/login/oauth/access_token"
@@ -16,11 +16,28 @@ async function authUser(req, res) {
         const responseData = await response.json()
         const accessToken = responseData.access_token;
         const authUser = await authenticateUser(accessToken);
-        res.json(authUser);
+        res.status(200).json(authUser);
     } catch (error) {
-        console.log('authUser:', error);
-        res.status(500).send('authUser: Error authenticating user');
+        res.status(500).send("authUser: Error authenticating user", error);
     }
 }
 
-module.exports = { authUser };
+exports.getAUser = async(req, res) => {
+    try {
+        const { userId } = request.params
+        const user = await findAUser(userId)
+        res.status(200).json(user)
+
+        if(!userId) {
+            res.status(400).send("getAuser: userId required")
+        }
+
+        if(!user) {
+            res.status(404).send("getAuser: User Not Found")
+        }
+    }
+
+    catch(error){
+        res.status(500).send("getAuser: Internal Error", error)
+    }
+}
