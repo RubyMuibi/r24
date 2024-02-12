@@ -8,6 +8,7 @@ const Project = require("@models/project");
 
 //users routes
 const usersRoutes = require("@routes/users");
+//projects routes
 const projectsRoutes = require("@routes/projects");
 
 const app = express();

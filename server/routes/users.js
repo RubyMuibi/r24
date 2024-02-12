@@ -1,9 +1,12 @@
 const express = require("express");
-const router = express.Router()
+const router = express.Router();
 
-const { authUser } = require("@controllers/users")
+const { authUser, getAUser, patchAuser } = require("@controllers/users");
 
-router.get("/auth", authUser)
+router.post("/auth", authUser);
 
+router.get("/:userId", getAUser);
 
-module.exports = router
+router.patch("/:userId", patchAuser);
+
+module.exports = router;

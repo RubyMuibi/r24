@@ -6,23 +6,28 @@ const userShema = new Schema({
   name: {
     type: String,
     required: true,
-  }, 
+  },
 
   github_id: String,
 
   email: String,
 
-  bio: String, 
+  bio: String,
 
-  website:  String,
+  website: String,
 
-  github:  String,
+  github: String,
 
+  projects: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "projects",
+    },
+  ],
 });
 
 const User = model("users", userShema);
 module.exports = User;
-
 
 /*
 "name": "ruby",
