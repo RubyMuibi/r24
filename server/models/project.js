@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const projectShema = new Schema({
-  project: {
+  title: {
     type: String,
     required: true,
   }, //project title (project or app name)

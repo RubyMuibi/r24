@@ -8,7 +8,10 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@models": "models"
+    "@models": "models",
+    "@managers": "managers",
+    "@routes": "routes",
+    "@controllers": "controllers"
   },
   "_moduleDirectories": [
     "node_modules_custom"
