@@ -30,7 +30,7 @@ exports.getUserToken = async (req, res) => {
     const user = await findUserToken(token);
 
     if (!token) {
-      return res.status(400).send("getUserToken: userId required");
+      return res.status(400).send("getUserToken: token required");
     }
 
     if (!user) {
