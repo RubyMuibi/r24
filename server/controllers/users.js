@@ -28,32 +28,30 @@ exports.getAUser = async (req, res) => {
     const user = await findAUser(userId);
 
     if (!userId) {
-      res.status(400).send("getAuser: userId required");
+      return res.status(400).send("getAuser: userId required");
     }
 
     if (!user) {
-      res.status(404).send("getAuser: User Not Found");
+      return res.status(404).send("getAuser: User Not Found");
     }
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).send("getAuser: Internal Error", error);
+    res.status(500).send("getAuser: Internal Error");
   }
 };
 
-exports.patchAuser = async (req, res) => {
+exports.patchAUser = async (req, res) => {
+  const { userId } = req.params;
+  const { newData } = req.body;
+
+  if (!userId || !newData) {
+    return res.status(404).send("patchAUser: userId and new data required");
+  }
   try {
-    const { userId } = req.params;
-    const { newData } = req.body;
-
     const user = await updateAUser(userId, newData);
-
-    if (!userId || !newData) {
-      res.status(400).send("patchAuser: userId and new data required");
-    }
-
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).send("patchAuser: Internal Error", error);
+    res.status(500).send("patchAUser: Internal Error");
   }
 };
