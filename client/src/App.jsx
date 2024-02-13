@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+      <UserContextProvider> <Header /> </UserContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<Project />} />

@@ -1,13 +1,11 @@
 import { getUserToken } from "@api/users";
 
-import { AuthContext } from "@contexts/AuthContext";
 
 import { useState, useEffect, createContext, useContext } from "react";
 
 export const UserContext = createContext();
 
 export default function UserContextProvider({ children }) {
-  const { jwt } = useContext(AuthContext);
 
   const [user, setUser] = useState("");
 
@@ -22,7 +20,7 @@ export default function UserContextProvider({ children }) {
     };
 
     getUserTokenHandler();
-  }, [jwt])
+  }, [user])
 
   return (
     <>
