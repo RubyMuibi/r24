@@ -1,4 +1,4 @@
-import styles from "./auth-context.module.css";
+import styles from "./authContext.module.css";
 
 import { useState, useEffect, createContext } from "react";
 
@@ -30,8 +30,8 @@ export default function AuthContextProvider({ children }) {
         const response = await axios.post(authApiUrl, { code: githubCode });
         const responseData = await response.data;
         const r24Token = responseData 
+        
         setJwt(responseData)
-
         localStorage.setItem("r24Token", r24Token);
         setIsLoggedIn(true);
       };
@@ -47,8 +47,6 @@ export default function AuthContextProvider({ children }) {
     };
 
     remainLoggedIn();
-
-    console.log(githubCode);
   }, []);
 
   const handleLogout = () => {
@@ -58,7 +56,7 @@ export default function AuthContextProvider({ children }) {
 
   return (
     <>
-      <AuthContext.Provider value={{ isLoggedIn, handleLogout }}>
+      <AuthContext.Provider value={{ isLoggedIn, handleLogout, jwt }}>
         {isLoggedIn ? (
           children
         ) : (

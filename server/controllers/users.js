@@ -19,7 +19,7 @@ exports.authUser = async (req, res) => {
     console.log(token)
     res.status(200).json(token);
   } catch (error) {
-    res.status(500).send("authUser: Error authenticating user");
+    res.status(500).send("authUser: Error authenticating user")
   }
  
 };
