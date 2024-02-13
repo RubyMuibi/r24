@@ -13,7 +13,7 @@ export default function Project() {
   const projectId = params.id;
   
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchProject = async () => {
       const projects = await getProjects();
 
       const filterProject = projects.filter((x) => {
@@ -21,7 +21,7 @@ export default function Project() {
       });
       filterProject.length > 0 ? setCurrentProject(filterProject) : setNotFound(!notFound);
     };
-    fetchProjects();
+    fetchProject();
   }, [params.id]);
 
   return (
