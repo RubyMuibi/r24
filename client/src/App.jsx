@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
      <Header/>
       <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<AuthContextProvider><Home/></AuthContextProvider>} />
       <Route path="/project/:id" element={<AuthContextProvider><Project/></AuthContextProvider>}/>
       <Route path="/auth" element={<AuthContextProvider><Auth/></AuthContextProvider>} />
       <Route path="/:id" element={<AuthContextProvider><Center/></AuthContextProvider>}/>

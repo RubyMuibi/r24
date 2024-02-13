@@ -1,9 +1,9 @@
-const { authenticateUser, findAUser, updateAUser } = require("@managers/users");
+const { authenticateUser, findAUser, updateAUser, findUserToken } = require("@managers/users");
 
 exports.authUser = async (req, res) => {
   try {
-    const githubCode = req.query.code;
-    const apiURL = "https://github.com/login/oauth/access_token";
+    const githubCode = req.body.code;
+    const apiUrl = "https://github.com/login/oauth/access_token";
     const params = `?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${githubCode}`;
     const requestOptions = {
       method: "POST",
@@ -12,13 +12,34 @@ exports.authUser = async (req, res) => {
         Accept: "application/json",
       },
     };
-    const response = await fetch(`${apiURL}${params}`, requestOptions);
+    const response = await fetch(`${apiUrl}${params}`, requestOptions);
     const responseData = await response.json();
-    const accessToken = responseData.access_token;
-    const authUser = await authenticateUser(accessToken);
-    res.status(200).json(authUser);
+    const accessToken = await responseData.access_token;
+    const token = await authenticateUser(accessToken);
+    console.log(token)
+    res.status(200).json(token);
   } catch (error) {
-    res.status(500).send("authUser: Error authenticating user", error);
+    res.status(500).send("authUser: Error authenticating user");
+  }
+ 
+};
+
+exports.getUserToken = async (req, res) => {
+  try {
+    const { token } = req.params;
+    const user = await findUserToken(token);
+
+    if (!token) {
+      return res.status(400).send("getUserToken: userId required");
+    }
+
+    if (!user) {
+      return res.status(404).send("getUserToken: User Not Found");
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).send("getUserToken: Internal Error");
   }
 };
 

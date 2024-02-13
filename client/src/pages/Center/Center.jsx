@@ -1,5 +1,7 @@
 import styles from "./center.module.css";
 import NotFound from "../../components/NotFound/NotFound";
+import { getProjects } from "@api/projects";
+
 
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -8,42 +10,37 @@ import axios from "axios";
 import { Icon } from "@iconify/react";
 
 export default function Center() {
-  const [currentRum, setCurrentRum] = useState([]);
+  const [currentProject, setCurrentProject] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const params = useParams();
-  const rumID = params.id;
-
-  const serverURL = import.meta.env.VITE_SERVER_URL;
-
+  const projectId = params.id;
+  
   useEffect(() => {
-    const getUserProjects = async () => {
-      const response = await axios.get(serverURL);
-      const responseData = await response.data;
+    const fetchProject = async () => {
+      const projects = await getProjects();
 
-      const filterRum = responseData.filter((x) => {
-        return x._id === rumID;
+      const filterProject = projects.filter((x) => {
+        return x._id === projectId;
       });
-      filterRum.length > 0 ? setCurrentRum(filterRum) : setNotFound(!notFound);
+      filterProject.length > 0 ? setCurrentProject(filterProject) : setNotFound(!notFound);
     };
-    getUserProjects();
+    fetchProject();
   }, [params.id]);
+
 
   const stacks = ["Next.js", "React", "JavaScript"];
 
   return (
     <>
-      
-      {notFound ? <NotFound /> :
 
-     ( 
-      <>
+
       <div className={styles.editContainer}>
             <button > Add a Project </button>
             <button> Edit Profile </button>
         </div>
 
       <main className={styles.container}>
-        {currentRum.map((x) => {
+        {currentProject.map((x) => {
           return (
             <> 
               <section className={styles.imgContainer}>
@@ -51,11 +48,11 @@ export default function Center() {
               </section>
 
               <section className={styles.detailsContainer}>
-                <h1> {x.rum} </h1>
-                <h3> About {x.rum} </h3>
+                <h1> {x.title} </h1>
+                <h3> About {x.title} </h3>
                 <p> {x.description} </p>
 
-                <h3> {x.rum} Stack </h3>
+                <h3> {x.title} Stack </h3>
                 <div className={styles.stackContainer}>
                   {stacks.map((x) => {
                     return (
@@ -107,7 +104,5 @@ export default function Center() {
         })}
       </main>
       </>
-    ) }
-    </>
   );
 }
