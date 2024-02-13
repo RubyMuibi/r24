@@ -1,23 +1,16 @@
 import styles from "./center.module.css";
 import { UserContext } from "@contexts/UserContext";
 
-import NotFound from "../../components/NotFound/NotFound";
-import { getProjects } from "@api/projects";
+
 
 import { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+
 
 import { Icon } from "@iconify/react";
 
 export default function Center() {
-  const params = useParams();
-  const [currentUser, setCurrentUser] = useState([]);
+ const { user } = useContext(UserContext);
 
-  const { user } = useContext(UserContext);
-  useEffect(() => {
-    setCurrentUser(user);
-  }, [user]);
 
   const stacks = ["Next.js", "React", "JavaScript"];
 
