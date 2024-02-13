@@ -22,12 +22,13 @@ export default function AuthContextProvider({children}) {
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
     const githubCode = searchParams.get("code");
-
+    
     if (githubCode) {
       const fetchAccessToken = async () => {
-        const apiURL =  `${import.meta.env.VITE_SERVER_URL}/authUser`;
+        const serverUrl =  import.meta.env.VITE_SERVER_URL;
+        const authApiUrl = `${serverUrl}/users/auth`
         const params = `?code=${githubCode}`;
-        const response = await axios.get(`${apiURL}${params}`);
+        const response = await axios.post(`${authApiUrl}${params}`);
         const responseData = await response.data;
         const accessToken = await responseData.access_token
         console.log(responseData);

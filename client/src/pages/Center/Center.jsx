@@ -16,7 +16,7 @@ export default function Center() {
   const serverURL = import.meta.env.VITE_SERVER_URL;
 
   useEffect(() => {
-    const getRum = async () => {
+    const getUserProjects = async () => {
       const response = await axios.get(serverURL);
       const responseData = await response.data;
 
@@ -25,7 +25,7 @@ export default function Center() {
       });
       filterRum.length > 0 ? setCurrentRum(filterRum) : setNotFound(!notFound);
     };
-    getRum();
+    getUserProjects();
   }, [params.id]);
 
   const stacks = ["Next.js", "React", "JavaScript"];
@@ -38,7 +38,7 @@ export default function Center() {
      ( 
       <>
       <div className={styles.editContainer}>
-            <button > Add a Rum </button>
+            <button > Add a Project </button>
             <button> Edit Profile </button>
         </div>
 

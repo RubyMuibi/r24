@@ -18,9 +18,9 @@ function App() {
      <Header/>
       <Routes>
       <Route path="/" element={<Home/>} />
-      <Route path="/:id" element={<AuthContextProvider><Project/></AuthContextProvider>}/>
+      <Route path="/project/:id" element={<AuthContextProvider><Project/></AuthContextProvider>}/>
       <Route path="/auth" element={<AuthContextProvider><Auth/></AuthContextProvider>} />
-      <Route path="/center/:id" element={<AuthContextProvider><Center/></AuthContextProvider>}/>
+      <Route path="/:id" element={<AuthContextProvider><Center/></AuthContextProvider>}/>
       <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>

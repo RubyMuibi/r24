@@ -25,7 +25,7 @@ export default function Projects() {
         {projects.map((x) => {
           return (
             <>
-              <Link to={`/${x._id}`} className={styles.projectContainer}>
+              <Link to={`/project/${x._id}`} className={styles.projectContainer}>
                 <div className={styles.imgContainer}>
                   <img src={x.image} className={styles.img} />
                 </div>

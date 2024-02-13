@@ -17,7 +17,7 @@ export default function Header() {
             exact to="/"
             className={( {isActive} ) => !isActive ? styles.noStyle : styles.stylish}
           >
-            <p> RUMS </p>
+            <p> Projects </p>
           </NavLink>
 
           <NavLink
