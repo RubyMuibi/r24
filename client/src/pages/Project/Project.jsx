@@ -33,7 +33,7 @@ export default function Project() {
           return (
             <>
               <section className={ styles.imgContainer }>
-                <img src={x.image}  className={ styles.rumImage } />
+                <img src={x.image}  className={ styles.projectImage } />
               </section>
 
               <section className={ styles.detailsContainer }>
@@ -56,12 +56,12 @@ export default function Project() {
 
                 <Link to={`https:${x.source}`} className={ styles.link }>
                     <h4> Source Code: </h4>
-                    <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" />
+                    <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" className={ styles.icon }/>
                 </Link>
 
                 <Link to={x.url} className={ styles.link }>
                     <h4> Demo: </h4>
-                    <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" />
+                    <Icon icon="fluent-mdl2:go" color="black" width="20" height="20" className={ styles.icon } />
                 </Link>
               </div>
 
