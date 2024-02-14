@@ -31,7 +31,7 @@ export default function Projects() {
                 </div>
 
                 <div className={styles.detailsContainer}>
-                  <h3>{x.user}</h3>
+                  <h3>{x.user.name}</h3>
                   <h3>{x.title}</h3>
                   <div className={styles.likesContainer}>
                           <Icon

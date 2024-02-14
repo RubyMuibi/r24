@@ -2,7 +2,7 @@ const Project = require("@models/project");
 
 exports.findAllProjects = async () => {
   try {
-    const projects = await Project.find();
+    const projects = await Project.find().populate('user', 'name -_id');
     return projects;
   } catch (error) {
     throw new Error("findAllProjects: Error fetching projects", error);
@@ -25,5 +25,5 @@ exports.removeAProject = async (projectId) => {
         return project;
     } catch (error) {
         throw new Error("deleteAProject: Error removing a project", error);
-    }
+    } 
 };

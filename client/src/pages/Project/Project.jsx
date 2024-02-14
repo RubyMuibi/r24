@@ -45,7 +45,7 @@ export default function Project() {
                 
                 <div className={ styles.link }>
                     <h4> Developer: </h4>
-                    <h5> {x.user}  </h5>
+                    <h5> {x.user.name}  </h5>
                     
                 </div>
 

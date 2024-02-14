@@ -21,7 +21,7 @@ exports.postAProject = async (req, res) => {
   } catch (error) {
     res.status(500).send("postAProject: Error adding project");
   }
-};
+}; 
 
 exports.deleteAProject = async (req, res) => {
   try {
