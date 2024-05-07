@@ -1,0 +1,16 @@
+.hero {
+  padding: 24px 32px;
+  font-size: 100px;
+  font-weight: 860;
+  border-bottom: 2px solid hsl(var(--primary));
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (max-width: 1200px) {
+    font-size: 60px;
+  }
+
+  @media (max-width: 660px) {
+    font-size: 24px;
+  }
+}

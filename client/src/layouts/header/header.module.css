@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+
+  .logo {
+    font-size: 18px;
+    font-weight: 900;
+    text-decoration: none;
+    color: hsl(var(--text));
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: hsl(var(--primary));
+      color: hsl(var(--background));
+      font-size: 10px;
+      gap: 40px;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      p {
+        font-size: 10px;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: hsl(var(--background));
+          color: hsl(var(--primary));
+          border-radius: 3px;
+          padding: 5px;
+        }
+      }
+
+      .noStyle {
+        text-decoration: none;
+      }
+
+      .stylish {
+        text-decoration: none;
+        color: hsl(var(--primary));
+
+        p {
+          background-color: hsl(var(--background));
+          color: hsl(var(--primary));
+          border-radius: 3px;
+          padding: 4px 8px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
